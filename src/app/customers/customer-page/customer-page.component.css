@@ -1,0 +1,209 @@
+.box {
+  width: 240px;
+  height: 50px;
+  margin: 0 auto;
+  position: relative;
+  /* margin: 20px; */
+  /* background-color: yellow; */
+  /* important part */
+}
+.box-over {
+  width: 240px;
+
+  margin: 0 auto;
+  position: relative;
+}
+.box-list {
+  position: absolute;
+  /* margin-top: 0px;
+  margin-left: 0px; */
+  padding-left: 10px;
+  width: 240px;
+  height: 180px;
+  border: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: move;
+
+  /* text-align: center; */
+  background: #fff;
+  transition: box-shadow 200ms cubic-bezier(0, 0, 0.2, 1);
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.cards {
+  margin-left: 100px;
+}
+.boards {
+  width: 90%;
+  margin: 150px auto;
+  border: 1px solid black;
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 2.4;
+
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* column-gap: 40px; */
+  display: grid;
+  height: 600px;
+}
+.boards-new {
+  width: 90%;
+  margin: 0px auto;
+  border: 1px solid black;
+  font-size: 16px;
+  font-family: sans-serif;
+  line-height: 2.4;
+
+  position: relative;
+  grid-template-columns: 1fr 1fr 1fr;
+  /* column-gap: 40px; */
+  display: grid;
+  height: 600px;
+}
+.example-box:active {
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.example-container {
+  /* width: 400px; */
+  /* max-width: 100%; */
+  /* margin: 25px 25px 25px 25px; */
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+#todo {
+  border: 1px solid grey;
+  background-color: #8cbecf;
+  height: 541px;
+  overflow: auto;
+}
+#done {
+  border: 1px solid grey;
+  background-color: #afafaf;
+  height: 541px;
+  overflow: auto;
+}
+#lessCritical {
+  border: 1px solid grey;
+  background-color: #eb8f4e;
+  height: 541px;
+  overflow: auto;
+}
+.example-list {
+  /* border: solid 1px #ccc; */
+  min-height: 60px;
+  /* background: white; */
+  /* border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; */
+  overflow: hidden;
+  display: block;
+}
+.drag-title {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+}
+.drag-desc {
+  font-size: 14px;
+
+  margin-top: 15px;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+.drop-title {
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.drop-desc {
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 30px;
+  display: none;
+}
+.example-box {
+  padding: 20px 10px;
+  border-bottom: solid 1px #ccc;
+  color: rgba(0, 0, 0, 0.87);
+  /* display: flex; */
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  cursor: move;
+  background: white;
+
+  font-size: 14px;
+}
+h1 {
+  margin-left: 20px;
+  line-height: 50px;
+}
+h4 {
+  margin-left: 20px;
+}
+.heading-text1 {
+  background-color: #00759d;
+  color: white;
+  padding-left: 10px;
+}
+.heading-text2 {
+  background-color: #626a69;
+  color: white;
+  padding-left: 10px;
+}
+.heading-text3 {
+  background-color: #c75400;
+  /* color: hsla(0, 0%, 100%, 0.7); */
+  color: white;
+  padding-left: 10px;
+}
+.success-checkmark:before {
+  content: "✔";
+  position: absolute;
+  right: 5px;
+  top: 8px;
+  width: 35px;
+  height: 35px;
+  text-align: center;
+  border: 1px solid #aaa;
+  background: #f8f8f8;
+  border-radius: 50%;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.example-box:last-child {
+  border: none;
+}
+
+.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+.disabled-modal {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0.4;
+  filter: alpha(opacity=80); /* For IE8 and earlier */
+  /* Important to set this */
+
+  /* // display: none; */
+}

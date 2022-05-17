@@ -1,0 +1,66 @@
+.main-title {
+  display: flex;
+
+  margin-top: 25px;
+
+  align-items: auto;
+}
+.flex-3-cols {
+  display: flex;
+  height: 400px;
+}
+.main-role-requirement {
+  margin-right: 25px;
+}
+.role-requirement {
+  box-shadow: 0 20px 30px 0 rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+  margin-right: 25px;
+}
+.title-head {
+  margin-left: 10px;
+}
+.title-desc {
+  margin-top: 15px;
+  font-family: ProximaNova-Regular, STZhongsong, Malgun Gothic, HGMaruGothicMPRO,
+    Arial Unicode MS, sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  margin-left: 10px;
+}
+.jobProfileDescription {
+  margin-top: 15px;
+  font-family: ProximaNova-Light, STZhongsong, Malgun Gothic, HGMaruGothicMPRO,
+    Arial Unicode MS, sans-serif;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: normal;
+  margin-left: 10px;
+}
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #7a7e7e;
+  margin: 1em 0;
+  padding: 0;
+}
+.main-role-requirement hr {
+  margin-top: 100px;
+}
+.contactTitle {
+  font-family: ProximaNova-Bold, STZhongsong, Malgun Gothic, HGMaruGothicMPRO,
+    Arial Unicode MS, sans-serif;
+  color: #afafaf;
+  font-size: 13px;
+  margin-left: 20px;
+  line-height: 16px;
+}
+.contactInfo {
+  color: #000;
+  font-size: 13px;
+  font-weight: 400;
+  margin-left: 20px;
+  line-height: 16px;
+}

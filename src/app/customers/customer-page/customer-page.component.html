@@ -1,0 +1,185 @@
+<h1>{{ title }}</h1>
+<h4>
+  {{ desc }}
+</h4>
+<!-- <h1 *ngIf="sample.length != 0">Choose the ideal qualities for the role.</h1>
+<h4 *ngIf="sample.length != 0">
+  Click the appropriate column for the card shown or drag it into place.
+</h4>
+<h1 *ngIf="count == 1">Balance the columns so that each has ten cards.</h1>
+<h4 *ngIf="count == 1 && this.todo.length !== this.missionCriticalTotal">
+  Select a quality and click the appropriate column or drag it into place.
+</h4>
+<h4 *ngIf="count == 1 && this.todo.length == this.missionCriticalTotal">
+  Great job, next part of the exercise is about sorting the items in each
+  column.
+</h4>
+<h1 *ngIf="count > 1">
+  Rank order the qualities in each column from most important down to least
+  important.
+</h1>
+<h4 *ngIf="count == 2">
+  Select a quality and click the appropriate position or drag it into place.
+  After you are done, click NEXT.
+</h4>
+<h4 *ngIf="count == 3">
+  Getting close, make sure to order the Critical column from most to least
+  important. After your are done click NEXT.
+</h4>
+<h4 *ngIf="count == 4">
+  Almost done, make sure to order the Less Critical column from most to least
+  important. After your are done click SUBMIT.
+</h4> -->
+<button
+  *ngIf="count >= 1"
+  [disabled]="totalSet"
+  (click)="cardsDragOverFun()"
+  class="mat-raised-button"
+>
+  {{ count > 3 ? "Submit" : "Next" }}
+</button>
+
+<div class="box-over" *ngIf="sample.length == 0 && count == 0">
+  <div class="box-list">
+    <div class="drag-desc">
+      That's all of the cards! Now on to the balancing part of the exercise.
+    </div>
+    <button (click)="cardsDragOverFun()" class="mat-raised-button">Next</button>
+  </div>
+</div>
+<div cdkDropListGroup>
+  <div
+    class="box"
+    *ngIf="count !== 1"
+    cdkDropList
+    [cdkDropListConnectedTo]="['todo', 'done', 'lessCritical']"
+    [cdkDropListData]="sample"
+    (cdkDropListDropped)="drop('box', $event)"
+  >
+    <div *ngFor="let item of sample">
+      <div class="box-list" cdkDrag>
+        <div class="drag-title">
+          {{ item.title }}
+        </div>
+        <div class="drag-desc">{{ item.desc }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    [ngClass]="{
+      boards: totalSet == true || count == 0,
+      'boards-new': count > 0
+    }"
+  >
+    <div
+      [ngClass]="{
+        'example-container': count <= 3,
+        'disabled-modal': count >= 3
+      }"
+    >
+      <h2 class="heading-text1">
+        MISSION CRITICAL
+        {{
+          sample.length == 0
+            ? " - " + this.todo.length + "/" + this.missionCriticalTotal
+            : ""
+        }}
+      </h2>
+      <div
+        *ngIf="count == 1 && this.todo.length == this.missionCriticalTotal"
+        class="success-checkmark"
+      ></div>
+      <div
+        id="todo"
+        cdkDropList
+        [cdkDropListData]="todo"
+        class="example-list"
+        (cdkDropListDropped)="drop('todo', $event)"
+        (click)="handleClick($event)"
+      >
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>
+          <div class="drop-title">
+            {{ item.title }}
+          </div>
+          <div class="drop-desc">{{ item.desc }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      [ngClass]="{
+        'example-container': count == 0 || 1 || 3,
+        'disabled-modal': count == 2 || count > 3
+      }"
+    >
+      <h2 class="heading-text2">
+        CRITICAL
+        {{
+          sample.length == 0
+            ? " - " + this.done.length + "/" + this.criticalTotal
+            : ""
+        }}
+      </h2>
+      <div
+        *ngIf="count == 1 && this.done.length == this.criticalTotal"
+        class="success-checkmark"
+      ></div>
+      <div
+        cdkDropList
+        id="done"
+        [cdkDropListData]="done"
+        class="example-list"
+        (cdkDropListDropped)="drop('done', $event)"
+        (click)="handleClick($event)"
+      >
+        <div class="example-box" *ngFor="let item of done" cdkDrag>
+          <div class="drop-title">
+            {{ item.title }}
+          </div>
+          <div class="drop-desc">{{ item.desc }}</div>
+        </div>
+      </div>
+    </div>
+    <div
+      [ngClass]="{
+        'example-container': count == 0 || 1,
+        'disabled-modal': count == 3 || count == 2 || count > 4
+      }"
+    >
+      <h2 class="heading-text3">
+        LESS CRITICAL
+        {{
+          sample.length == 0
+            ? " - " + this.lessCritical.length + "/" + this.lessCriticalTotal
+            : ""
+        }}
+      </h2>
+      <div
+        *ngIf="count == 1 && this.lessCritical.length == this.lessCriticalTotal"
+        class="success-checkmark"
+      ></div>
+      <div
+        cdkDropList
+        id="lessCritical"
+        [cdkDropListData]="lessCritical"
+        class="example-list"
+        (click)="handleClick($event)"
+        (cdkDropListDropped)="drop('lessCritical', $event)"
+      >
+        <div class="example-box" *ngFor="let item of lessCritical" cdkDrag>
+          <div class="drop-title">
+            {{ item.title }}
+          </div>
+          <div class="drop-desc">{{ item.desc }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Copyright 2022 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->
+
+<router-outlet></router-outlet>
