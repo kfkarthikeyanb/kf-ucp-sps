@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 
     FormsModule,
     DragDropModule,
+    MatDialogModule,
   ],
   declarations: [CustomerPageComponent, CustomerListComponent],
   entryComponents: [],

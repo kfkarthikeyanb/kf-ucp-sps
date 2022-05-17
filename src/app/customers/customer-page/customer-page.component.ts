@@ -4,6 +4,8 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { CustomerListComponent } from '../customer-list/customer-list.component';
 export class Product1 {
   title: string;
   desc: string; // default hours
@@ -14,7 +16,7 @@ export class Product1 {
   styleUrls: ['./customer-page.component.css'],
 })
 export class CustomerPageComponent {
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
   public dragging: boolean;
   count: number = 0;
   missionCriticalTotal: number;
@@ -144,6 +146,7 @@ export class CustomerPageComponent {
   ];
 
   ngOnInit() {
+    this.openDialog();
     if (this.sample) {
       if (this.sample.length != 0) {
         this.title = 'Choose the ideal qualities for the role.';
@@ -177,6 +180,13 @@ export class CustomerPageComponent {
           this.criticalTotal
       );
     }
+  }
+  openDialog() {
+    // this.dialog.open(CustomerListComponent, {
+    //   data: {
+    //     animal: 'panda',
+    //   },
+    // });
   }
   drop(dropListName: string, event: CdkDragDrop<any>) {
     // console.log(event.previousContainer.data[event.previousIndex]);
@@ -241,7 +251,8 @@ export class CustomerPageComponent {
   }
   public handleClick(event: any): void {
     // event.target.style.transition = 'height 0.25s ease-in';
-    if (event.target.parentElement.firstChild.className == 'drop-title') {
+
+    if (event.target.parentElement.className == 'cdk-drag example-box') {
       if (event.target.parentElement.style.height == '200px') {
         event.target.parentElement.style.height = '78.39px';
         event.target.parentElement.querySelector('.drop-desc').style.display =
@@ -253,7 +264,9 @@ export class CustomerPageComponent {
           'block';
         // event.target.style.display = 'block';
       }
-    } else {
+    } else if (
+      event.target.parentElement.className == 'cdk-drop-list example-list'
+    ) {
       if (event.target.parentElement.firstChild.style.height == '200px') {
         event.target.parentElement.firstChild.style.height = '78.39px';
         event.target.parentElement.querySelector('.drop-desc').style.display =
